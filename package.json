@@ -2,18 +2,6 @@
   "name": "nvmermind",
   "version": "0.1.0",
   "description": "Uninstall old versions of Node.js as installed by nvm",
-  "main": "src/index.js",
-  "scripts": {
-    "posttest": "markdownlint-cli2 \"*.md\" && eslint .",
-    "test": "nyc mocha \"test/**/*.spec.js\"",
-    "release": "standard-version",
-    "prepare": "husky install",
-    "lint-staged": "lint-staged"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/boneskull/nvmermind"
-  },
   "keywords": [
     "nvm",
     "node",
@@ -23,13 +11,46 @@
     "clean",
     "cleanup"
   ],
-  "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
-  "license": "Apache-2.0",
-  "engines": {
-    "node": ">=12"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boneskull/nvmermind"
   },
+  "license": "Apache-2.0",
+  "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
+  "main": "src/index.js",
   "bin": {
     "nvmermind": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "release": "standard-version",
+    "test": "nyc mocha \"test/**/*.spec.js\"",
+    "posttest": "markdownlint-cli2 \"*.md\" && eslint ."
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.md": [
+      "markdownlint-cli2-fix"
+    ],
+    "*.{yml,md}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "endOfLine": "auto",
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@humanwhocodes/env": "^2.2.0",
+    "prompts": "^2.4.1",
+    "semver": "^6.3.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.4",
@@ -52,25 +73,7 @@
     "unexpected": "^12.0.3",
     "unexpected-sinon": "^11.0.1"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix"
-    ],
-    "*.{yml,md}": [
-      "prettier --write"
-    ],
-    "*.md": [
-      "markdownlint-cli2-fix"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "bracketSpacing": false,
-    "endOfLine": "auto"
-  },
-  "dependencies": {
-    "@humanwhocodes/env": "^2.2.0",
-    "prompts": "^2.4.1",
-    "semver": "^6.3.0"
+  "engines": {
+    "node": ">=12"
   }
 }
