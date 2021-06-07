@@ -1,8 +1,7 @@
 {
-  "name": "packagename",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Shankle short loin porchetta strip steak tongue drumstick shoulder shank turkey pork loin picanha flank.",
+  "name": "nvmermind",
+  "version": "0.1.0",
+  "description": "Uninstall old versions of Node.js as installed by nvm",
   "main": "src/index.js",
   "scripts": {
     "posttest": "markdownlint-cli2 \"*.md\" && eslint .",
@@ -13,13 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/boneskull/packagename"
+    "url": "https://github.com/boneskull/nvmermind"
   },
-  "keywords": [],
+  "keywords": [
+    "nvm",
+    "node",
+    "nodejs",
+    "node.js",
+    "uninstall",
+    "clean",
+    "cleanup"
+  ],
   "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=12"
+  },
+  "bin": {
+    "nvmermind": "./src/index.js"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.4",
@@ -57,5 +67,10 @@
     "singleQuote": true,
     "bracketSpacing": false,
     "endOfLine": "auto"
+  },
+  "dependencies": {
+    "@humanwhocodes/env": "^2.2.0",
+    "prompts": "^2.4.1",
+    "semver": "^6.3.0"
   }
 }
