@@ -1,0 +1,61 @@
+{
+  "name": "packagename",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shankle short loin porchetta strip steak tongue drumstick shoulder shank turkey pork loin picanha flank.",
+  "main": "src/index.js",
+  "scripts": {
+    "posttest": "markdownlint-cli2 \"*.md\" && eslint .",
+    "test": "nyc mocha \"test/**/*.spec.js\"",
+    "release": "standard-version",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boneskull/packagename"
+  },
+  "keywords": [],
+  "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=12"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.14.4",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-semistandard": "^15.0.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "markdownlint-cli2": "^0.1.3",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "prettier": "^2.1.2",
+    "sinon": "^11.1.1",
+    "standard-version": "^9.0.0",
+    "unexpected": "^12.0.3",
+    "unexpected-sinon": "^11.0.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.{yml,md}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "markdownlint-cli2-fix"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "endOfLine": "auto"
+  }
+}
