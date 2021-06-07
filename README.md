@@ -18,8 +18,6 @@ npx nvmermind
 
 `nvmermind` will keep the **latest installed version of _each_ major** it finds, and prompt to remove all the others. So, if you have `14.16.1` and `14.17.0` installed, it will keep `14.17.0`.
 
-As of
-
 ### API
 
 There's an "API." You can `require('nvmermind')`, but I don't feel like documenting it. Maybe next week? There are some docstrings, which is better than nothing.
