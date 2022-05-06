@@ -22,7 +22,7 @@ async function main() {
     name: 'removeAll',
     onRender(kleur) {
       const displayList = oldVersions.map(
-        (version) => `${kleur.red(version.raw)}\t(at ${version.dirpath})`
+        (version) => `${kleur.red(version.raw)}\t(at ${version.dirpath})\n`
       );
 
       this.msg = `${kleur.yellow(
