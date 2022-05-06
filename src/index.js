@@ -21,9 +21,9 @@ async function main() {
     type: 'confirm',
     name: 'removeAll',
     onRender(kleur) {
-      const displayList = oldVersions.map(
-        (version) => `${kleur.red(version.raw)}\t(at ${version.dirpath})\n`
-      );
+      const displayList = oldVersions
+        .map((version) => `${kleur.red(version.raw)}\t(at ${version.dirpath})`)
+        .join('\n');
 
       this.msg = `${kleur.yellow(
         'The following Node.js versions will be removed:'
