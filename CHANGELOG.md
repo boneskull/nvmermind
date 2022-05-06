@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/boneskull/nvmermind/compare/v0.2.2...v0.2.3) (2022-05-06)
+
+### Features
+
+- **display:** added a shark spinner ([3a7ef7d](https://github.com/boneskull/nvmermind/commit/3a7ef7d9e7544e99e38c07deb74f7d7d3f9bf000))
+
 ### [0.2.2](https://github.com/boneskull/nvmermind/compare/v0.2.1...v0.2.2) (2022-05-06)
 
 ### Bug Fixes
