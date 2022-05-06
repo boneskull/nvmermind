@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/boneskull/nvmermind/compare/v0.2.0...v0.2.1) (2022-05-06)
+
+### Bug Fixes
+
+- **output:** fixes display list ([401b5c8](https://github.com/boneskull/nvmermind/commit/401b5c8436ce3e9d3531e572ff6fefc52f5ba72a))
+
 ## [0.2.0](https://github.com/boneskull/nvmermind/compare/v0.1.1...v0.2.0) (2022-05-06)
 
 ### ⚠ BREAKING CHANGES
