@@ -27,7 +27,7 @@
   "scripts": {
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "release": "standard-version",
+    "release": "standard-version -a",
     "test": "nyc mocha \"test/**/*.spec.js\"",
     "posttest": "markdownlint-cli2 \"*.md\" && eslint ."
   },
