@@ -49,11 +49,13 @@
   },
   "dependencies": {
     "@humanwhocodes/env": "^2.2.0",
+    "ora": "^5.4.1",
     "prompts": "^2.4.1",
     "semver": "^6.3.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.4",
+    "@types/semver": "^7.3.9",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-semistandard": "^15.0.1",
