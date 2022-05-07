@@ -54,7 +54,7 @@
     "semver": "^6.3.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.14.4",
+    "@babel/eslint-parser": "7.17.0",
     "@types/semver": "7.3.9",
     "eslint": "7.27.0",
     "eslint-config-prettier": "8.3.0",
