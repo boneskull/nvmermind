@@ -51,7 +51,7 @@
     "@humanwhocodes/env": "^2.2.0",
     "ora": "^5.4.1",
     "prompts": "^2.4.1",
-    "semver": "^6.3.0"
+    "semver": "^7.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.17.0",
