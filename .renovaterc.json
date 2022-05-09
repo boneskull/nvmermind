@@ -1,12 +1,23 @@
 {
-  "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
+  "extends": [
+    "config:base",
+    ":semanticCommitTypeAll(chore)"
+  ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
+      "automerge": true,
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ]
     },
     {
+      "enabled": false,
       "matchPackageNames": [
         "find-up",
         "globby",
@@ -16,10 +27,12 @@
         "wrap-ansi",
         "write-pkg",
         "@types/wrap-ansi",
-        "execa"
+        "execa",
+        "ora"
       ],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
+      "matchUpdateTypes": [
+        "major"
+      ]
     }
   ],
   "semanticCommits": "enabled"
