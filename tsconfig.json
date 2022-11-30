@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "types",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "types": ["node", "mocha"]
+  },
+  "include": ["src"]
+}

@@ -21,6 +21,11 @@ async function main() {
   const confirmation = await prompts({
     type: 'confirm',
     name: 'removeAll',
+    /**
+     *
+     * @param {import('kleur').Kleur} kleur
+     */
+    // @ts-ignore
     onRender(kleur) {
       const displayList = oldVersions
         .map((version) => `${kleur.red(version.raw)} (at ${version.dirpath})`)
