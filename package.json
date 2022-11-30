@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@types/semver": "7.3.13",
-    "eslint": "7.32.0",
+    "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.26.0",
