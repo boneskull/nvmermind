@@ -50,7 +50,7 @@
   "dependencies": {
     "@humanwhocodes/env": "2.2.2",
     "ora": "5.4.1",
-    "prompts": "2.4.1",
+    "prompts": "2.4.2",
     "semver": "7.3.7"
   },
   "devDependencies": {
