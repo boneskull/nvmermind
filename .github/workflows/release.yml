@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - main
+name: release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@ed61e76296090fba410e2a73f43463f717504028 # v3
+        with:
+          release-type: node
+          package-name: nvmermind
