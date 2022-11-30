@@ -3,5 +3,5 @@
   "extends": [
     "github>appium/appium//renovate/default"
   ],
-  "semanticCommitScope": "deps"
+  "semanticCommitScope": "{{#if parentDir}}{{parentDir}}{{else}}deps{{/if}}"
 }
