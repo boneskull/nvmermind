@@ -48,10 +48,10 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@humanwhocodes/env": "^2.2.0",
-    "ora": "^5.4.1",
-    "prompts": "^2.4.1",
-    "semver": "^7.0.0"
+    "@humanwhocodes/env": "2.2.0",
+    "ora": "5.4.1",
+    "prompts": "2.4.1",
+    "semver": "7.3.7"
   },
   "devDependencies": {
     "@types/semver": "7.3.13",
