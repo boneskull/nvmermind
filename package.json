@@ -70,7 +70,7 @@
     "prettier": "2.8.1",
     "sinon": "15.0.1",
     "standard-version": "9.5.0",
-    "unexpected": "13.0.1",
+    "unexpected": "13.1.0",
     "unexpected-sinon": "11.1.0"
   },
   "engines": {
