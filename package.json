@@ -67,7 +67,7 @@
     "markdownlint-cli2": "0.8.1",
     "mocha": "10.2.0",
     "nyc": "15.1.0",
-    "prettier": "2.8.8",
+    "prettier": "3.0.1",
     "sinon": "15.2.0",
     "standard-version": "9.5.0",
     "unexpected": "13.2.1",
