@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "types",
+    "emitDeclarationOnly": true,
+    "types": ["node"],
+    "resolveJsonModule": true
+  },
+  "include": ["src/*.js"]
+}

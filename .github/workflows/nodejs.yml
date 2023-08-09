@@ -8,15 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: [14, 16, 18]
+        node_version: [16, 18, 20]
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@master
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@e33196f7422957bea03ed53f6fbb155025ffc7b8 # v3
         with:
-          version: ${{ matrix.node_version }}
+          node-version: ${{ matrix.node_version }}
       - name: npm install
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@c5482d70ec8706408996e31ac94075030694993f # v1
       - name: test
         run: npm test
+      - name: lint
+        run: npm run lint
