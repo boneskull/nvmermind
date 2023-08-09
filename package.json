@@ -9,7 +9,9 @@
     "node.js",
     "uninstall",
     "clean",
-    "cleanup"
+    "cleanup",
+    "version",
+    "versions"
   ],
   "repository": {
     "type": "git",
@@ -17,19 +19,27 @@
   },
   "license": "Apache-2.0",
   "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
-  "main": "src/index.js",
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
   "bin": {
     "nvmermind": "./src/index.js"
   },
   "files": [
-    "src"
+    "src",
+    "types"
   ],
   "scripts": {
-    "lint-staged": "lint-staged",
-    "prepare": "husky install",
-    "release": "standard-version -a",
-    "test": "nyc mocha \"test/**/*.spec.js\"",
-    "posttest": "markdownlint-cli2 \"*.md\" && eslint ."
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
+    "rebuild": "run-s build clean",
+    "lint:staged": "lint-staged",
+    "husky": "husky install",
+    "prepare": "run-p husky rebuild",
+    "test": "mocha \"test/**/*.spec.js\"",
+    "lint": "run-p lint:sources lint:markdown",
+    "lint:sources": "eslint .",
+    "lint:markdown": "markdownlint-cli2 \"*.md\"",
+    "lint:commit": "commitlint"
   },
   "lint-staged": {
     "*.js": [
@@ -38,7 +48,7 @@
     "*.md": [
       "markdownlint-cli2-fix"
     ],
-    "*.{yml,md}": [
+    "*.{yml,md,js}": [
       "prettier --write"
     ]
   },
@@ -49,31 +59,44 @@
   },
   "dependencies": {
     "@humanwhocodes/env": "2.2.2",
+    "filesize": "10.0.8",
+    "get-folder-size": "3.1.0",
+    "kleur": "4.1.5",
     "ora": "5.4.1",
+    "pluralize": "8.0.0",
     "prompts": "2.4.2",
     "semver": "7.5.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.6.7",
+    "@commitlint/config-conventional": "17.6.7",
+    "@tsconfig/node16": "16.1.0",
+    "@types/get-folder-size": "3.0.1",
+    "@types/node": "20.4.9",
+    "@types/pluralize": "0.0.30",
+    "@types/prompts": "2.4.4",
     "@types/semver": "7.5.0",
     "eslint": "8.46.0",
     "eslint-config-prettier": "8.10.0",
-    "eslint-config-standard": "17.1.0",
+    "eslint-config-semistandard": "17.0.0",
     "eslint-plugin-import": "2.28.0",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-promise": "6.1.1",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "markdownlint-cli2": "0.8.1",
     "mocha": "10.2.0",
-    "nyc": "15.1.0",
-    "prettier": "2.8.8",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.0.1",
     "sinon": "15.2.0",
-    "standard-version": "9.5.0",
+    "typescript": "5.1.6",
     "unexpected": "13.2.1",
     "unexpected-sinon": "11.1.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": "^16.13.0 || ^18.0.0 || ^20.0.0"
+  },
+  "overrides": {
+    "kleur": "4.1.5"
   }
 }
