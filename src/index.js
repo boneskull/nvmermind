@@ -77,7 +77,23 @@ async function main() {
   const spinner = ora({
     text: 'Analyzing installed versions of Node.js…',
   }).start();
-  const {oldVersions, newestVersionsByMajor} = await partitionVersions(nvmDir);
+
+  /** @type {InstalledVersion[]} */
+  let oldVersions;
+  /** @type {Record<string, InstalledVersion>} */
+  let newestVersionsByMajor;
+
+  try {
+    ({oldVersions, newestVersionsByMajor} = await partitionVersions(nvmDir));
+  } catch (err) {
+    spinner.fail(
+      `Failed to locate installed versions (is NVM_DIR correct?): ${kleur.red(
+        /** @type {Error} */ (err).message,
+      )}`,
+    );
+    return;
+  }
+
   if (oldVersions.length) {
     spinner.succeed(
       `Found ${pluralize('old version', oldVersions.length, true)}`,
@@ -133,29 +149,6 @@ Proceed?`,
 }
 
 /**
- * Returns a minimal environment in which `nvm` can run
- * @param {Record<string, string>} [overrides] - Environment overrides
- * @returns {NodeJS.ProcessEnv}
- */
-function getMinimalEnv(overrides = {}) {
-  const {env} = process;
-  return Object.keys(env).reduce(
-    (e, key) => {
-      if (
-        key.startsWith('npm_') ||
-        key.startsWith('NVM_') ||
-        env[key] === undefined
-      ) {
-        return e;
-      }
-      e[key] = e[key] ?? env[key];
-      return e;
-    },
-    {...overrides},
-  );
-}
-
-/**
  * Runs `nvm` with args and options.  Resolves with output from run
  * @param {string[]} [args] - Args for `nvm`
  * @param {import('child_process').ExecFileOptions} [opts] - Options for `execFile`
@@ -163,27 +156,15 @@ function getMinimalEnv(overrides = {}) {
  */
 function runNvm(args = [], opts = {}) {
   return new Promise((resolve, reject) => {
-    execFile(
-      NVM_BIN,
-      args,
-      opts,
-      // {
-      //   ...opts,
-      //   env: getMinimalEnv({
-      //     ...(opts.env ?? {}),
-      //     NVM_DIR: opts.env?.NVM_DIR ?? env.require('NVM_DIR'),
-      //   }),
-      // },
-      (err, stdout, stderr) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve({
-          stdout,
-          stderr,
-        });
-      },
-    );
+    execFile(NVM_BIN, args, opts, (err, stdout, stderr) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve({
+        stdout,
+        stderr,
+      });
+    });
   });
 }
 
@@ -288,5 +269,4 @@ module.exports = {
   getAllInstalledVersions,
   nvmUninstall,
   runNvm,
-  getMinimalEnv,
 };
