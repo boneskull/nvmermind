@@ -39,7 +39,7 @@
     "test:smoke": "npx mkdirp ./test/fixtures/versions/node; npx cross-env NVM_DIR=./test/fixtures node .",
     "lint": "run-p lint:sources lint:markdown",
     "lint:sources": "eslint .",
-    "lint:markdown": "markdownlint-cli2 \"*.md\"",
+    "lint:markdown": "markdownlint-cli2 README.md",
     "lint:commit": "commitlint"
   },
   "lint-staged": {
