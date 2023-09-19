@@ -11,13 +11,13 @@ jobs:
         node_version: [16, 18, 20]
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
       - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version: ${{ matrix.node_version }}
       - name: npm install
-        uses: bahmutov/npm-install@0a424fea8730e1589f423ab6a7d886f047679aa9
+        uses: bahmutov/npm-install@0a424fea8730e1589f423ab6a7d886f047679aa9 # v1.8.35
       - name: test
         run: npm test
       - name: lint
