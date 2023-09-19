@@ -1,6 +1,6 @@
 {
   "name": "nvmermind",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Uninstall old versions of Node.js as installed by nvm",
   "keywords": [
     "nvm",
