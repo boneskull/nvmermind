@@ -16,18 +16,15 @@ const {version} = require('../package.json');
 
 const env = new Env();
 
-/**
- * Directory within `$NVM_DIR` where Node.js versions are installed
- */
+/** Directory within `$NVM_DIR` where Node.js versions are installed */
 const NODE_VERSIONS_RELDIR = 'versions/node';
 
-/**
- * Path to the `nvm` wrapper script
- */
+/** Path to the `nvm` wrapper script */
 const NVM_BIN = path.resolve(__dirname, 'nvm.sh');
 
 /**
  * Object representing a Node.js version on disk installed by nvm
+ *
  * @typedef InstalledVersion
  * @property {import('semver').SemVer} version - Parsed version
  * @property {string} dirpath - Absolute path to version directory
@@ -36,9 +33,12 @@ const NVM_BIN = path.resolve(__dirname, 'nvm.sh');
 
 /**
  * Build a list of Node.js versions for display
- * @param {(size: number) => unknown} filesize - Function to convert bytes to human-readable format
+ *
+ * @param {(size: number) => unknown} filesize - Function to convert bytes to
+ *   human-readable format
  * @param {InstalledVersion[]} oldVersions - List of old versions
- * @param {Record<string, InstalledVersion>} newestVersionsByMajor - Map of newest versions by major version
+ * @param {Record<string, InstalledVersion>} newestVersionsByMajor - Map of
+ *   newest versions by major version
  * @returns {string} List of versions for display
  */
 function buildDisplayList(filesize, oldVersions, newestVersionsByMajor) {
@@ -55,6 +55,7 @@ function buildDisplayList(filesize, oldVersions, newestVersionsByMajor) {
 
 /**
  * Main entry point
+ *
  * @returns {Promise<void>}
  */
 async function main() {
@@ -149,10 +150,12 @@ Proceed?`,
 }
 
 /**
- * Runs `nvm` with args and options.  Resolves with output from run
+ * Runs `nvm` with args and options. Resolves with output from run
+ *
  * @param {string[]} [args] - Args for `nvm`
- * @param {import('child_process').ExecFileOptions} [opts] - Options for `execFile`
- * @returns {Promise<{stdout: string, stderr: string}>}
+ * @param {import('child_process').ExecFileOptions} [opts] - Options for
+ *   `execFile`
+ * @returns {Promise<{stdout: string; stderr: string}>}
  */
 function runNvm(args = [], opts = {}) {
   return new Promise((resolve, reject) => {
@@ -173,7 +176,9 @@ function runNvm(args = [], opts = {}) {
  *
  * This removes installations in serial, mainly because it's more of a pain to
  * display multiple progress bars.
- * @param {string[]} versions - List of raw Node.js version id's, e.g., `v14.0.1`
+ *
+ * @param {string[]} versions - List of raw Node.js version id's, e.g.,
+ *   `v14.0.1`
  * @param {import('ora').Ora} spinner - Spinner to use
  * @returns {Promise<boolean>} `true` if success
  */
@@ -193,7 +198,9 @@ async function nvmUninstall(versions, spinner) {
 }
 
 /**
- * Get a sorted list of objects representing all installed-by-NVM Node.js versions
+ * Get a sorted list of objects representing all installed-by-NVM Node.js
+ * versions
+ *
  * @param {string} nvmDir - Typically `$NVM_DIR` env var
  * @returns {Promise<InstalledVersion[]>}
  */
@@ -228,14 +235,20 @@ async function getAllInstalledVersions(nvmDir) {
 }
 
 /**
- * Splits the list returned by {@link getAllInstalledVersions} into versions which are old (and should be removed) and a map of the newest version for each major version
+ * Splits the list returned by {@link getAllInstalledVersions} into versions
+ * which are old (and should be removed) and a map of the newest version for
+ * each major version
+ *
  * @param {string} nvmDir - Typically `$NVM_DIR` env var
- * @returns {Promise<{oldVersions: InstalledVersion[], newestVersionsByMajor: Record<string,InstalledVersion>}>}
+ * @returns {Promise<{
+ *   oldVersions: InstalledVersion[];
+ *   newestVersionsByMajor: Record<string, InstalledVersion>;
+ * }>}
  */
 async function partitionVersions(nvmDir) {
   /** @type {InstalledVersion[]} */
   const oldVersions = [];
-  /** @type {Record<string,InstalledVersion>} */
+  /** @type {Record<string, InstalledVersion>} */
   const newestVersionsByMajor = {};
   const allVersions = await getAllInstalledVersions(nvmDir);
 
