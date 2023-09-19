@@ -2,6 +2,24 @@
   "name": "nvmermind",
   "version": "1.0.1",
   "description": "Uninstall old versions of Node.js as installed by nvm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boneskull/nvmermind"
+  },
+  "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "^16.13.0 || ^18.0.0 || ^20.0.0"
+  },
+  "bin": {
+    "nvmermind": "./src/index.js"
+  },
+  "main": "./src/index.js",
+  "types": "./types/src/index.d.ts",
+  "files": [
+    "src",
+    "types"
+  ],
   "keywords": [
     "nvm",
     "node",
@@ -13,50 +31,21 @@
     "version",
     "versions"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/boneskull/nvmermind"
-  },
-  "license": "Apache-2.0",
-  "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
-  "main": "./src/index.js",
-  "types": "./types/src/index.d.ts",
-  "bin": {
-    "nvmermind": "./src/index.js"
-  },
-  "files": [
-    "src",
-    "types"
-  ],
   "scripts": {
     "build": "tsc -b",
     "clean": "tsc -b --clean",
-    "rebuild": "run-s build clean",
-    "lint:staged": "lint-staged",
     "husky": "husky install",
-    "prepare": "run-p husky rebuild",
-    "test": "smoker test:smoke",
-    "test:smoke": "npx mkdirp ./test/fixtures/versions/node; npx cross-env NVM_DIR=./test/fixtures node .",
     "lint": "run-p lint:sources lint:markdown",
-    "lint:sources": "eslint .",
+    "lint:commit": "commitlint",
+    "lint:eslint": "eslint .",
     "lint:markdown": "markdownlint-cli2 README.md",
-    "lint:commit": "commitlint"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix"
-    ],
-    "*.md": [
-      "markdownlint-cli2-fix"
-    ],
-    "*.{yml,md,js}": [
-      "prettier --write"
-    ]
-  },
-  "prettier": {
-    "bracketSpacing": false,
-    "endOfLine": "auto",
-    "singleQuote": true
+    "lint:prettier": "prettier --check .",
+    "lint:sources": "run-p lint:eslint lint:prettier",
+    "lint:staged": "lint-staged",
+    "prepare": "run-p husky rebuild",
+    "rebuild": "run-s build clean",
+    "test": "smoker test:smoke",
+    "test:smoke": "npx mkdirp ./test/fixtures/versions/node; npx cross-env NVM_DIR=./test/fixtures node ."
   },
   "dependencies": {
     "@humanwhocodes/env": "3.0.1",
@@ -89,12 +78,32 @@
     "midnight-smoker": "7.0.2",
     "npm-run-all": "4.1.5",
     "prettier": "3.0.3",
+    "prettier-plugin-jsdoc": "1.0.2",
+    "prettier-plugin-pkg": "0.18.0",
     "typescript": "5.2.2"
-  },
-  "engines": {
-    "node": "^16.13.0 || ^18.0.0 || ^20.0.0"
   },
   "overrides": {
     "kleur": "4.1.5"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "markdownlint-cli2-fix"
+    ],
+    "*.{ya?ml,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "endOfLine": "auto",
+    "singleQuote": true,
+    "plugins": [
+      "prettier-plugin-pkg",
+      "prettier-plugin-jsdoc"
+    ]
   }
 }
