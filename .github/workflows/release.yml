@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Create Release
         id: release
-        uses: google-github-actions/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d
+        uses: google-github-actions/release-please-action@48f987371f270c6b9dd82948f9ce6e38c469f858
         with:
           release-type: node
           package-name: nvmermind
