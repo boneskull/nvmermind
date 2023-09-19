@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.1](https://github.com/boneskull/nvmermind/compare/v1.0.0...v1.0.1) (2023-09-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @humanwhocodes/env to v3 ([2e4ade3](https://github.com/boneskull/nvmermind/commit/2e4ade3b431ce1984699122b07e27ffd4f7932a6))
+* **deps:** update dependency filesize to v10.0.11 ([93d4266](https://github.com/boneskull/nvmermind/commit/93d42667c2e7046b0ee1cafcee58e5dc8b1edf1f))
+* **deps:** update dependency filesize to v10.0.12 ([aa7f2b5](https://github.com/boneskull/nvmermind/commit/aa7f2b5cd876464951b5cf8fc867163d5ee4f17a))
+* fix path to types ([ba74c00](https://github.com/boneskull/nvmermind/commit/ba74c00800eaf7d03c19a1dda1f81d0a0c120cf4))
+
 ## [1.0.0](https://github.com/boneskull/nvmermind/compare/v0.2.3...v1.0.0) (2023-08-09)
 
 
