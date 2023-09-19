@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Create Release
         id: release
-        uses: google-github-actions/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d # tag=v3
+        uses: google-github-actions/release-please-action@ca6063f4ed81b55db15b8c42d1b6f7925866342d
         with:
           release-type: node
           package-name: nvmermind
@@ -18,10 +18,10 @@ jobs:
       # see https://github.com/googleapis/release-please/blob/main/docs/manifest-releaser.md#using-with-github-actions-and-lerna
       - name: Checkout Repository
         if: ${{ steps.release.outputs.releases_created }}
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # tag=v4
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
       - name: Setup Node
         if: ${{ steps.release.outputs.releases_created }}
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # tag=v3
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
@@ -30,7 +30,7 @@ jobs:
         run: npm i -g npm@latest
       - name: Build Package
         if: ${{ steps.release.outputs.releases_created }}
-        uses: bahmutov/npm-install@c5482d70ec8706408996e31ac94075030694993f # tag=v1
+        uses: bahmutov/npm-install@c5482d70ec8706408996e31ac94075030694993f #
 
       # Release Please has already incremented versions and published tags, so we just
       # need to publish all unpublished versions to NPM here

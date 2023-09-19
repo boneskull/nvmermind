@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # tag=v3
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
         with:
           node-version: ${{ matrix.node_version }}
       - name: npm install
-        uses: bahmutov/npm-install@c5482d70ec8706408996e31ac94075030694993f # tag=v1
+        uses: bahmutov/npm-install@c5482d70ec8706408996e31ac94075030694993f
       - name: test
         run: npm test
       - name: lint
