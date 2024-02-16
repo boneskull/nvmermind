@@ -30,7 +30,7 @@ jobs:
         run: npm i -g npm@latest
       - name: Build Package
         if: ${{ steps.release.outputs.releases_created }}
-        uses: bahmutov/npm-install@0a424fea8730e1589f423ab6a7d886f047679aa9 # v1.8.35
+        uses: bahmutov/npm-install@237ded403e6012a48281f4572eab0c8eafe55b3f # v1.10.1
 
       # Release Please has already incremented versions and published tags, so we just
       # need to publish all unpublished versions to NPM here
