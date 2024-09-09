@@ -9,5 +9,6 @@
       "prerelease": false
     }
   },
+  "bootstrap-sha": "4c99d005c7f1a44023cd510db54327c5256d08e9",
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
