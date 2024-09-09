@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.2](https://github.com/boneskull/nvmermind/compare/nvmermind-v1.0.1...nvmermind-v1.0.2) (2024-09-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency filesize to v10.1.6 ([d138f35](https://github.com/boneskull/nvmermind/commit/d138f35b9372b0a68b429b84da90bf7cb07efde6))
+* **pkg:** update engines ([bb3cb4d](https://github.com/boneskull/nvmermind/commit/bb3cb4d67c81fcc44b98a38fc75befe14086a5d7))
+
 ## [1.0.1](https://github.com/boneskull/nvmermind/compare/v1.0.0...v1.0.1) (2023-09-19)
 
 

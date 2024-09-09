@@ -1,6 +1,6 @@
 {
   "name": "nvmermind",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Uninstall old versions of Node.js as installed by nvm",
   "repository": {
     "type": "git",
@@ -60,7 +60,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
-    "@tsconfig/node16": "16.1.3",
+    "@tsconfig/node16": "16.1.1",
     "@types/get-folder-size": "3.0.1",
     "@types/node": "20.6.2",
     "@types/pluralize": "0.0.30",
