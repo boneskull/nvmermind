@@ -9,7 +9,7 @@
   "author": "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
   "license": "Apache-2.0",
   "engines": {
-    "node": "^16.13.0 || ^18.0.0 || ^20.0.0"
+    "node": "^16.13.0 || ^18.0.0 || ^20.0.0 || ^=22.0.0"
   },
   "bin": {
     "nvmermind": "./src/index.js"
