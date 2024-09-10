@@ -61,7 +61,7 @@
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
     "@tsconfig/node16": "16.1.1",
-    "@types/get-folder-size": "3.0.1",
+    "@types/get-folder-size": "3.0.4",
     "@types/node": "20.6.2",
     "@types/pluralize": "0.0.30",
     "@types/prompts": "2.4.4",
