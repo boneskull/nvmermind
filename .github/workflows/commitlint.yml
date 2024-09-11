@@ -11,4 +11,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Run commitlint
-        uses: wagoid/commitlint-github-action@6319f54d83768b60acd6fd60e61007ccc583e62f # v5.4.3
+        uses: wagoid/commitlint-github-action@9763196e10f27aef304c9b8b660d31d97fce0f99 # v5.5.1
