@@ -72,7 +72,7 @@
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "6.6.0",
-    "husky": "9.1.6",
+    "husky": "9.1.7",
     "lint-staged": "15.2.10",
     "markdownlint-cli2": "0.15.0",
     "midnight-smoker": "8.0.0",
