@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/boneskull/nvmermind/compare/nvmermind-v1.0.2...nvmermind-v1.0.3) (2025-03-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.6.3 ([e9c435e](https://github.com/boneskull/nvmermind/commit/e9c435eb9dc7e5fe04cb699adc0a3f01ccda3134))
+* **deps:** update dependency semver to v7.7.0 ([#315](https://github.com/boneskull/nvmermind/issues/315)) ([57988bc](https://github.com/boneskull/nvmermind/commit/57988bcb714b30455d1be7923108a0d4eac66cfc))
+* **deps:** update dependency semver to v7.7.1 ([#319](https://github.com/boneskull/nvmermind/issues/319)) ([0297980](https://github.com/boneskull/nvmermind/commit/02979807448ce8691466e2c9e528bda58c3de1fb))
+
 ## [1.0.2](https://github.com/boneskull/nvmermind/compare/nvmermind-v1.0.1...nvmermind-v1.0.2) (2024-09-09)
 
 
