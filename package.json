@@ -60,7 +60,7 @@
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@tsconfig/node16": "16.1.1",
+    "@tsconfig/node16": "16.1.4",
     "@types/get-folder-size": "3.0.4",
     "@types/node": "22.15.23",
     "@types/pluralize": "0.0.33",
