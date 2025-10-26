@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/boneskull/nvmermind/compare/nvmermind-v1.0.2...nvmermind-v1.0.3) (2025-10-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency filesize to v11 ([#398](https://github.com/boneskull/nvmermind/issues/398)) ([dd91322](https://github.com/boneskull/nvmermind/commit/dd91322c384e7ce1d0b6c2c9d2bf47dce2196366))
+* **deps:** update dependency filesize to v11.0.1 ([#399](https://github.com/boneskull/nvmermind/issues/399)) ([9b96abe](https://github.com/boneskull/nvmermind/commit/9b96abe6ddd611e3a005da7611dee1346b5fd64d))
+* **deps:** update dependency filesize to v11.0.10 ([#421](https://github.com/boneskull/nvmermind/issues/421)) ([ecc7ffd](https://github.com/boneskull/nvmermind/commit/ecc7ffd29bce821f67527d7b9e16cda64d6ed0af))
+* **deps:** update dependency filesize to v11.0.12 ([#422](https://github.com/boneskull/nvmermind/issues/422)) ([5589d2c](https://github.com/boneskull/nvmermind/commit/5589d2c4be3bedb99490571d0b2e515b4d07c578))
+* **deps:** update dependency filesize to v11.0.13 ([#423](https://github.com/boneskull/nvmermind/issues/423)) ([012f0c0](https://github.com/boneskull/nvmermind/commit/012f0c078167217b516317d55d2714f4a186cb72))
+* **deps:** update dependency filesize to v11.0.2 ([#401](https://github.com/boneskull/nvmermind/issues/401)) ([309c33e](https://github.com/boneskull/nvmermind/commit/309c33efcf8f7c14a9c5653cffd9054244099ac8))
+* **deps:** update dependency filesize to v11.0.7 ([#420](https://github.com/boneskull/nvmermind/issues/420)) ([994e9f3](https://github.com/boneskull/nvmermind/commit/994e9f37637fd8bc9258e6adc7057c647b8fb2ad))
+* **deps:** update dependency semver to v7.6.3 ([e9c435e](https://github.com/boneskull/nvmermind/commit/e9c435eb9dc7e5fe04cb699adc0a3f01ccda3134))
+* **deps:** update dependency semver to v7.7.0 ([#315](https://github.com/boneskull/nvmermind/issues/315)) ([57988bc](https://github.com/boneskull/nvmermind/commit/57988bcb714b30455d1be7923108a0d4eac66cfc))
+* **deps:** update dependency semver to v7.7.1 ([#319](https://github.com/boneskull/nvmermind/issues/319)) ([0297980](https://github.com/boneskull/nvmermind/commit/02979807448ce8691466e2c9e528bda58c3de1fb))
+* **deps:** update dependency semver to v7.7.2 ([#370](https://github.com/boneskull/nvmermind/issues/370)) ([0091d36](https://github.com/boneskull/nvmermind/commit/0091d36868d4b12cd5d2fb953c181aa9f01aa380))
+* **deps:** update dependency semver to v7.7.3 ([#430](https://github.com/boneskull/nvmermind/issues/430)) ([6b8a4aa](https://github.com/boneskull/nvmermind/commit/6b8a4aa9ed220896157cc5f37ec8fa3e5aea8d9e))
+
 ## [1.0.2](https://github.com/boneskull/nvmermind/compare/nvmermind-v1.0.1...nvmermind-v1.0.2) (2024-09-09)
 
 
