@@ -54,7 +54,7 @@
   "dependencies": {
     "@humanwhocodes/env": "3.0.1",
     "filesize": "11.0.13",
-    "get-folder-size": "4.0.0",
+    "get-folder-size": "5.0.0",
     "kleur": "4.1.5",
     "ora": "5.4.1",
     "pluralize": "8.0.0",
