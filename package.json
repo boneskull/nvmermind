@@ -47,7 +47,7 @@
     "lint:prettier": "prettier --check .",
     "lint:sources": "run-p -sl lint:eslint lint:prettier",
     "prepare": "run-p -sl husky rebuild",
-    "rebuild": "run-s -s build clean",
+    "rebuild": "run-s -s clean build",
     "test": "smoker test:smoke",
     "test:smoke": "npx mkdirp ./test/fixtures/versions/node; npx cross-env NVM_DIR=./test/fixtures node ."
   },
