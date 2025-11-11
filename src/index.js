@@ -2,16 +2,17 @@
 
 'use strict';
 
-const pluralize = require('pluralize');
-const kleur = require('kleur');
-const {execFile} = require('child_process');
-const prompts = require('prompts');
-const {parse} = require('semver');
-const path = require('node:path');
 // @ts-expect-error - types broken; see https://github.com/humanwhocodes/env/pull/78
 const {Env} = require('@humanwhocodes/env');
-const ora = require('ora');
+const {execFile} = require('child_process');
+const kleur = require('kleur');
 const {readdir} = require('node:fs/promises');
+const path = require('node:path');
+const ora = require('ora');
+const pluralize = require('pluralize');
+const prompts = require('prompts');
+const {parse} = require('semver');
+
 const {version} = require('../package.json');
 
 const env = new Env();
@@ -41,9 +42,9 @@ const NVM_BIN = path.resolve(__dirname, 'nvm.sh');
  *   newest versions by major version
  * @returns {string} List of versions for display
  */
-function buildDisplayList(filesize, oldVersions, newestVersionsByMajor) {
+const buildDisplayList = (filesize, oldVersions, newestVersionsByMajor) => {
   return oldVersions
-    .map(({version, dirpath, size}) => {
+    .map(({dirpath, size, version}) => {
       return `${kleur.gray('-')} ${kleur.red(version.raw)} (${kleur.yellow(
         String(filesize(size)),
       )} in ${dirpath}; keeping ${kleur.green(
@@ -51,21 +52,58 @@ function buildDisplayList(filesize, oldVersions, newestVersionsByMajor) {
       )})`;
     })
     .join('\n');
-}
+};
+
+/**
+ * Get a sorted list of objects representing all installed-by-NVM Node.js
+ * versions
+ *
+ * @param {string} nvmDir - Typically `$NVM_DIR` env var
+ * @returns {Promise<InstalledVersion[]>}
+ */
+const getAllInstalledVersions = async (nvmDir) => {
+  const nodeVersionsDir = path.resolve(nvmDir, NODE_VERSIONS_RELDIR);
+  const versionDirEntries = await readdir(nodeVersionsDir, {
+    withFileTypes: true,
+  });
+
+  /** @type {import('get-folder-size')} */
+  const {default: getFolderSize} = /** @type {any} */ (
+    await import('get-folder-size')
+  ); // jacked up types
+  const installedVersions = /** @type {InstalledVersion[]} */ (
+    await Promise.all(
+      versionDirEntries
+        .filter((dirEnt) => dirEnt.isDirectory())
+        // note that parse() understands the `v` prefix
+        .map((dirEnt) => ({dirEnt, version: parse(dirEnt.name)}))
+        .filter(({version}) => version) // toss out invalid versions
+        .map(async ({dirEnt, version}) => {
+          const dirpath = path.resolve(nodeVersionsDir, dirEnt.name);
+          const size = await getFolderSize.loose(dirpath);
+          return {dirpath, size, version};
+        }),
+    )
+  );
+
+  return installedVersions.sort(({version: versionA}, {version: versionB}) =>
+    versionB.compare(versionA),
+  );
+};
 
 /**
  * Main entry point
  *
  * @returns {Promise<void>}
  */
-async function main() {
+const main = async () => {
   console.error(`😒 ${kleur.blue('nvmermind')} ${kleur.white(`v${version}`)}`);
 
   /** @type {string} */
   let nvmDir;
   try {
     nvmDir = env.require('NVM_DIR');
-  } catch (err) {
+  } catch {
     console.error(
       kleur.red(
         'Could not find the NVM_DIR environment variable. Make sure nvm is installed and enabled',
@@ -85,7 +123,7 @@ async function main() {
   let newestVersionsByMajor;
 
   try {
-    ({oldVersions, newestVersionsByMajor} = await partitionVersions(nvmDir));
+    ({newestVersionsByMajor, oldVersions} = await partitionVersions(nvmDir));
   } catch (err) {
     spinner.fail(
       `Failed to locate installed versions (is NVM_DIR correct?): ${kleur.red(
@@ -112,13 +150,13 @@ async function main() {
   );
 
   const confirmation = await prompts({
-    type: 'confirm',
-    name: 'removeAll',
     message: `The following Node.js versions will be removed:
 
 ${displayList}
 
 Proceed?`,
+    name: 'removeAll',
+    type: 'confirm',
   });
 
   if (confirmation.removeAll) {
@@ -126,8 +164,8 @@ Proceed?`,
       'Warning: estimated duration is directly proportional to the amount of crap you globally installed',
     );
     const spinner = ora({
-      text: 'Removing old versions…',
       spinner: 'shark',
+      text: 'Removing old versions…',
     });
     const success = await nvmUninstall(
       oldVersions.map(({version}) => version.raw),
@@ -147,29 +185,7 @@ Proceed?`,
       );
     }
   }
-}
-
-/**
- * Runs `nvm` with args and options. Resolves with output from run
- *
- * @param {string[]} [args] - Args for `nvm`
- * @param {import('child_process').ExecFileOptions} [opts] - Options for
- *   `execFile`
- * @returns {Promise<{stdout: string; stderr: string}>}
- */
-function runNvm(args = [], opts = {}) {
-  return new Promise((resolve, reject) => {
-    execFile(NVM_BIN, args, opts, (err, stdout, stderr) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve({
-        stdout,
-        stderr,
-      });
-    });
-  });
-}
+};
 
 /**
  * Run `nvm uninstall <version>` for each of `versions`.
@@ -182,7 +198,7 @@ function runNvm(args = [], opts = {}) {
  * @param {import('ora').Ora} spinner - Spinner to use
  * @returns {Promise<boolean>} `true` if success
  */
-async function nvmUninstall(versions, spinner) {
+const nvmUninstall = async (versions, spinner) => {
   let failed = false;
   for await (const version of versions) {
     spinner.start(`Removing ${version}...`);
@@ -195,44 +211,7 @@ async function nvmUninstall(versions, spinner) {
     }
   }
   return !failed;
-}
-
-/**
- * Get a sorted list of objects representing all installed-by-NVM Node.js
- * versions
- *
- * @param {string} nvmDir - Typically `$NVM_DIR` env var
- * @returns {Promise<InstalledVersion[]>}
- */
-async function getAllInstalledVersions(nvmDir) {
-  const nodeVersionsDir = path.resolve(nvmDir, NODE_VERSIONS_RELDIR);
-  const versionDirEntries = await readdir(nodeVersionsDir, {
-    withFileTypes: true,
-  });
-
-  /** @type {import('get-folder-size')} */
-  const {default: getFolderSize} = /** @type {any} */ (
-    await import('get-folder-size')
-  ); // jacked up types
-  const installedVersions = /** @type {InstalledVersion[]} */ (
-    await Promise.all(
-      versionDirEntries
-        .filter((dirEnt) => dirEnt.isDirectory())
-        // note that parse() understands the `v` prefix
-        .map((dirEnt) => ({version: parse(dirEnt.name), dirEnt}))
-        .filter(({version}) => version) // toss out invalid versions
-        .map(async ({version, dirEnt}) => {
-          const dirpath = path.resolve(nodeVersionsDir, dirEnt.name);
-          const size = await getFolderSize.loose(dirpath);
-          return {version, dirpath, size};
-        }),
-    )
-  );
-
-  return installedVersions.sort(({version: versionA}, {version: versionB}) =>
-    versionB.compare(versionA),
-  );
-}
+};
 
 /**
  * Splits the list returned by {@link getAllInstalledVersions} into versions
@@ -245,7 +224,7 @@ async function getAllInstalledVersions(nvmDir) {
  *   newestVersionsByMajor: Record<string, InstalledVersion>;
  * }>}
  */
-async function partitionVersions(nvmDir) {
+const partitionVersions = async (nvmDir) => {
   /** @type {InstalledVersion[]} */
   const oldVersions = [];
   /** @type {Record<string, InstalledVersion>} */
@@ -263,8 +242,30 @@ async function partitionVersions(nvmDir) {
     }
   });
 
-  return {oldVersions, newestVersionsByMajor};
-}
+  return {newestVersionsByMajor, oldVersions};
+};
+
+/**
+ * Runs `nvm` with args and options. Resolves with output from run
+ *
+ * @param {string[]} [args] - Args for `nvm`
+ * @param {import('child_process').ExecFileOptions} [opts] - Options for
+ *   `execFile`
+ * @returns {Promise<{stdout: string; stderr: string}>}
+ */
+const runNvm = (args = [], opts = {}) => {
+  return new Promise((resolve, reject) => {
+    execFile(NVM_BIN, args, opts, (err, stdout, stderr) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve({
+        stderr,
+        stdout,
+      });
+    });
+  });
+};
 
 if (require.main === module) {
   (async () => {
@@ -278,8 +279,8 @@ if (require.main === module) {
 }
 
 module.exports = {
-  partitionVersions,
   getAllInstalledVersions,
   nvmUninstall,
+  partitionVersions,
   runNvm,
 };
