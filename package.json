@@ -34,6 +34,10 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "tsc -b --clean",
+    "fix": "run-p -sl \"fix:*\"",
+    "fix:eslint": "eslint --fix .",
+    "fix:markdown": "markdownlint-cli2 --fix README.md",
+    "fix:prettier": "prettier --write .",
     "husky": "husky install",
     "lint": "run-p lint:sources lint:markdown",
     "lint:commit": "commitlint",
