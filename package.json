@@ -52,7 +52,7 @@
     "test:smoke": "npx mkdirp ./test/fixtures/versions/node; npx cross-env NVM_DIR=./test/fixtures node ."
   },
   "dependencies": {
-    "@humanwhocodes/env": "3.0.1",
+    "@humanwhocodes/env": "3.0.5",
     "filesize": "11.0.13",
     "get-folder-size": "4.0.0",
     "kleur": "4.1.5",
