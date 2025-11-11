@@ -70,7 +70,7 @@
     "@types/pluralize": "0.0.33",
     "@types/prompts": "2.4.9",
     "@types/semver": "7.7.1",
-    "eslint": "8.57.1",
+    "eslint": "9.39.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-config-semistandard": "17.0.0",
     "eslint-plugin-import": "2.32.0",
