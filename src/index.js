@@ -2,7 +2,6 @@
 
 'use strict';
 
-// @ts-expect-error - types broken; see https://github.com/humanwhocodes/env/pull/78
 const {Env} = require('@humanwhocodes/env');
 const {execFile} = require('child_process');
 const kleur = require('kleur');
