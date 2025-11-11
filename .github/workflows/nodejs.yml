@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: npm install
-        uses: bahmutov/npm-install@4488656f8e90d3c85e3a964db0018dd624f340e7 # v1.11.1
+        uses: bahmutov/npm-install@3e063b974f0d209807684aa23e534b3dde517fd9 # v1.11.2
       - name: test
         run: npm test
       - name: lint
