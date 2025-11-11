@@ -40,7 +40,7 @@
     "fix:markdown": "markdownlint-cli2 --fix README.md",
     "fix:prettier": "prettier --write .",
     "husky": "husky",
-    "lint": "run-p -sl \"lint.*\"",
+    "lint": "run-p -sl \"lint:*\"",
     "lint-staged": "lint-staged",
     "lint:eslint": "eslint .",
     "lint:markdown": "markdownlint-cli2 README.md",
