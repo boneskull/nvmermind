@@ -6,6 +6,8 @@ If you have a stinking bonepile of old Node.js versions in your `~/.nvm` folder,
 
 ## Install
 
+`nvmermind` requires Node.js v20.19.0 or newer.
+
 You _could_ install this, but maybe better to...
 
 ## Usage
