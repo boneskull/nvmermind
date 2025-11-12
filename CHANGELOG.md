@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.1](https://github.com/boneskull/nvmermind/compare/nvmermind-v2.0.0...nvmermind-v2.0.1) (2025-11-12)
+
+
+### Bug Fixes
+
+* force release to fix missing README.md, maybe ([b0eba63](https://github.com/boneskull/nvmermind/commit/b0eba636ea948ed1f034719629395d599b26a8d7))
+* types in package.json ([3f484b2](https://github.com/boneskull/nvmermind/commit/3f484b28409b685b0214cafc81f2b804aebe42af))
+
 ## [2.0.0](https://github.com/boneskull/nvmermind/compare/nvmermind-v1.0.2...nvmermind-v2.0.0) (2025-11-12)
 
 
