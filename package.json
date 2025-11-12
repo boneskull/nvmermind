@@ -1,6 +1,6 @@
 {
   "name": "nvmermind",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Uninstall old versions of Node.js as installed by nvm",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "nvmermind": "./src/index.js"
   },
   "main": "./src/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./types/src/index.d.ts",
   "files": [
     "src",
     "types"
@@ -84,7 +84,7 @@
     "prettier": "3.6.2",
     "prettier-plugin-jsdoc": "1.5.0",
     "prettier-plugin-pkg": "0.21.2",
-    "typescript": "5.9.3"
+    "typescript": "5.2.2"
   },
   "overrides": {
     "kleur": "4.1.5"
