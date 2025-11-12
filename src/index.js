@@ -248,12 +248,13 @@ const partitionVersions = async (nvmDir) => {
  * Runs `nvm` with args and options. Resolves with output from run
  *
  * @param {string[]} [args] - Args for `nvm`
- * @param {import('child_process').ExecFileOptions} [opts] - Options for
- *   `execFile`
+ * @param {import('child_process').ExecFileOptionsWithStringEncoding} [opts] -
+ *   Options for `execFile`
  * @returns {Promise<{stdout: string; stderr: string}>}
  */
-const runNvm = (args = [], opts = {}) => {
+const runNvm = (args = [], opts = {encoding: 'utf-8'}) => {
   return new Promise((resolve, reject) => {
+    opts = {...opts, encoding: 'utf-8'};
     execFile(NVM_BIN, args, opts, (err, stdout, stderr) => {
       if (err) {
         return reject(err);
