@@ -15,7 +15,7 @@
     "nvmermind": "./src/index.js"
   },
   "main": "./src/index.js",
-  "types": "./types/src/index.d.ts",
+  "types": "./types/index.d.ts",
   "files": [
     "src",
     "types"
