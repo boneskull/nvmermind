@@ -77,7 +77,7 @@
     "eslint-plugin-perfectionist": "4.15.1",
     "globals": "16.5.0",
     "husky": "9.1.7",
-    "lint-staged": "16.2.6",
+    "lint-staged": "16.2.7",
     "markdownlint-cli2": "0.18.1",
     "midnight-smoker": "8.0.0",
     "npm-run-all2": "8.0.4",
