@@ -68,7 +68,7 @@
     "@stylistic/eslint-plugin": "5.5.0",
     "@tsconfig/node16": "16.1.6",
     "@types/get-folder-size": "3.0.4",
-    "@types/node": "24.10.0",
+    "@types/node": "24.10.4",
     "@types/pluralize": "0.0.33",
     "@types/prompts": "2.4.9",
     "@types/semver": "7.7.1",
